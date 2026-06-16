@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 7523361564394266400}
   m_Layer: 0
   m_Name: BadBear
-  m_TagString: Untagged
+  m_TagString: Bad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,6 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Target
   pointValue: -100000
   explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
+  fredSound: {fileID: 8300000, guid: f58fc1058375c44028c445f6bf359487, type: 3}
 --- !u!1 &6141503961629187759
 GameObject:
   m_ObjectHideFlags: 0

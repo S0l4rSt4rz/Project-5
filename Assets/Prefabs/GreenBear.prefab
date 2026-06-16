@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Target
   pointValue: 2
   explosionParticle: {fileID: 7303472089845130122, guid: 6cbc21f5e9162483993a2b84b14d5ac8, type: 3}
+  fredSound: {fileID: 8300000, guid: f58fc1058375c44028c445f6bf359487, type: 3}
 --- !u!1 &1505824798053641454
 GameObject:
   m_ObjectHideFlags: 0

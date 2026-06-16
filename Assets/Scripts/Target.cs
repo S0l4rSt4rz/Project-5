@@ -14,6 +14,8 @@ public class Target : MonoBehaviour
     private GameManager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
+    public AudioClip fredSound;
+    private AudioSource fredSpeaker;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,8 +23,8 @@ public class Target : MonoBehaviour
         targetRb.AddForce(RandomForce(), ForceMode.Impulse);
         targetRb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
-        gameManager = GameObject.Find("Game Manager")
-        .GetComponent<GameManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        fredSpeaker = GameObject.Find("Game Manager").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,7 +40,9 @@ Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             {
                 // If ray hits this enemy, destroy it
                 if (hit.transform == transform)
+                if (gameManager.isGameActive)
                 {
+                    fredSpeaker.PlayOneShot(fredSound, 0.2f);
                     Destroy(gameObject);
                     Instantiate(explosionParticle, transform.position,
                     explosionParticle.transform.rotation);
@@ -61,9 +65,13 @@ Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("DestroyZone"))
-        {
+        if(other.gameObject.CompareTag("DestroyZone"))
+        {   
             Destroy(gameObject);
+            if (!gameObject.CompareTag("Bad")) 
+            { 
+                gameManager.GameOver(); 
+            }
         }
     }
 }
